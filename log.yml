@@ -1,0 +1,13 @@
+- name: Collect log files from Control Node
+  hosts: server1
+  tasks:
+    - name:  Collect log files
+      fetch:
+        src: /var/log/syslog
+        dest: /home/jgpaz/collectlog
+        flat: yes
+      register: syslog
+
+    - name: View syslog
+      debug:
+        var: syslog
